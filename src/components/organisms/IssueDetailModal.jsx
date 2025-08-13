@@ -137,12 +137,14 @@ const assignedUser = users.find(user => user.Id == issue?.assignee);
                 <Badge variant={priorityConfig?.variant} className="font-semibold">
                   <ApperIcon name={priorityConfig?.icon} size={12} className="mr-1" />
                   {issue.priority?.toUpperCase()}
-                </Badge>
+</Badge>
                 <Badge variant={statusConfig?.variant}>
                   {statusConfig?.label}
                 </Badge>
               </div>
-              <span className="text-sm text-gray-500 font-medium">#{issue.id.slice(-6)}</span>
+              <span className="text-sm text-gray-500 font-medium">
+                #{issue?.id ? String(issue.id).slice(-6) : 'N/A'}
+              </span>
             </div>
             <button
               onClick={onClose}
