@@ -88,11 +88,11 @@ const priorityConfig = getPriorityConfig(issue.priority);
         {/* Header */}
         <div className="flex items-start justify-between">
             <div className="flex items-center gap-2">
-                <Badge variant={priorityConfig.variant} className="text-xs font-semibold">
+<Badge variant={priorityConfig.variant} className="text-xs font-semibold">
                     <ApperIcon name={priorityConfig.icon} size={12} className="mr-1" />
                     {issue.priority.toUpperCase()}
                 </Badge>
-                <span className="text-xs text-gray-500 font-medium">#{issue.id.slice(-6)}</span>
+                <span className="text-xs text-gray-500 font-medium">#{String(issue.id).slice(-6)}</span>
             </div>
             {/* Labels Section */}
 {issue.labelIds && issue.labelIds.length > 0 && <div className="flex flex-wrap gap-1 mt-3">
