@@ -1,0 +1,44 @@
+[
+  {
+    "Id": 1,
+    "name": "Sarah Chen",
+    "email": "sarah.chen@company.com",
+    "avatar": "",
+    "role": "developer"
+  },
+  {
+    "Id": 2,
+    "name": "Marcus Johnson",
+    "email": "marcus.johnson@company.com",
+    "avatar": "",
+    "role": "developer"
+  },
+  {
+    "Id": 3,
+    "name": "Emily Rodriguez",
+    "email": "emily.rodriguez@company.com", 
+    "avatar": "",
+    "role": "designer"
+  },
+  {
+    "Id": 4,
+    "name": "David Kim",
+    "email": "david.kim@company.com",
+    "avatar": "",
+    "role": "manager"
+  },
+  {
+    "Id": 5,
+    "name": "Jessica Wu",
+    "email": "jessica.wu@company.com",
+    "avatar": "",
+    "role": "tester"
+  },
+  {
+    "Id": 6,
+    "name": "Alex Thompson",
+    "email": "alex.thompson@company.com",
+    "avatar": "",
+    "role": "developer"
+  }
+]

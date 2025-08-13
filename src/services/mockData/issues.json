@@ -1,0 +1,122 @@
+[
+  {
+    "id": "issue-2024-001-abc123",
+    "title": "Login form validation not working properly",
+    "description": "The login form accepts invalid email formats and doesn't show proper error messages. This affects user experience and security.",
+    "status": "open",
+    "priority": "high",
+    "assignee": "1",
+    "createdAt": "2024-01-15T09:30:00.000Z",
+    "updatedAt": "2024-01-15T14:22:00.000Z"
+  },
+  {
+    "id": "issue-2024-002-def456",
+    "title": "Dashboard charts loading slowly on mobile devices",
+    "description": "The dashboard charts take more than 5 seconds to load on mobile devices, especially on slower connections. Need to optimize for better performance.",
+    "status": "in-progress",
+    "priority": "medium",
+    "assignee": "2",
+    "createdAt": "2024-01-12T11:45:00.000Z",
+    "updatedAt": "2024-01-16T08:15:00.000Z"
+  },
+  {
+    "id": "issue-2024-003-ghi789",
+    "title": "Add dark mode toggle to user preferences",
+    "description": "Users are requesting a dark mode option in the application. This should be available in user preferences and remember the setting across sessions.",
+    "status": "review",
+    "priority": "low",
+    "assignee": "3",
+    "createdAt": "2024-01-10T16:20:00.000Z",
+    "updatedAt": "2024-01-17T12:30:00.000Z"
+  },
+  {
+    "id": "issue-2024-004-jkl012",
+    "title": "Database connection timeout errors in production",
+    "description": "Production environment is experiencing frequent database timeout errors, especially during peak hours. This is causing application crashes.",
+    "status": "open",
+    "priority": "critical",
+    "assignee": "4",
+    "createdAt": "2024-01-18T07:45:00.000Z",
+    "updatedAt": "2024-01-18T07:45:00.000Z"
+  },
+  {
+    "id": "issue-2024-005-mno345",
+    "title": "File upload progress bar stuck at 100%",
+    "description": "When uploading large files, the progress bar reaches 100% but doesn't complete the upload process. Users think the upload is done but it's still processing.",
+    "status": "closed",
+    "priority": "medium",
+    "assignee": "1",
+    "createdAt": "2024-01-08T14:10:00.000Z",
+    "updatedAt": "2024-01-14T16:45:00.000Z"
+  },
+  {
+    "id": "issue-2024-006-pqr678",
+    "title": "Email notifications not being sent for password resets",
+    "description": "Users are not receiving password reset emails. The functionality worked fine in development but fails in production environment.",
+    "status": "in-progress",
+    "priority": "high",
+    "assignee": "2",
+    "createdAt": "2024-01-16T10:30:00.000Z",
+    "updatedAt": "2024-01-17T09:20:00.000Z"
+  },
+  {
+    "id": "issue-2024-007-stu901",
+    "title": "Implement user role management system",
+    "description": "Need to add a comprehensive role management system that allows admins to assign different permissions to users based on their roles.",
+    "status": "open",
+    "priority": "medium",
+    "assignee": "3",
+    "createdAt": "2024-01-14T13:25:00.000Z",
+    "updatedAt": "2024-01-15T11:40:00.000Z"
+  },
+  {
+    "id": "issue-2024-008-vwx234",
+    "title": "API rate limiting causing 429 errors",
+    "description": "Third-party API integration is hitting rate limits during high-traffic periods, causing 429 errors and service degradation.",
+    "status": "review",
+    "priority": "high",
+    "assignee": "4",
+    "createdAt": "2024-01-13T08:15:00.000Z",
+    "updatedAt": "2024-01-18T14:30:00.000Z"
+  },
+  {
+    "id": "issue-2024-009-yza567",
+    "title": "Update terms of service page",
+    "description": "Legal team has provided updated terms of service that need to be implemented on the website with proper versioning.",
+    "status": "closed",
+    "priority": "low",
+    "assignee": "1",
+    "createdAt": "2024-01-05T15:50:00.000Z",
+    "updatedAt": "2024-01-12T10:20:00.000Z"
+  },
+  {
+    "id": "issue-2024-010-bcd890",
+    "title": "Search functionality returns irrelevant results",
+    "description": "The search feature is not working properly and returns results that don't match the search terms. Need to improve the search algorithm.",
+    "status": "open",
+    "priority": "medium",
+    "assignee": "",
+    "createdAt": "2024-01-17T12:40:00.000Z",
+    "updatedAt": "2024-01-17T12:40:00.000Z"
+  },
+  {
+    "id": "issue-2024-011-efg123",
+    "title": "Mobile app crashes when uploading images",
+    "description": "The mobile application crashes consistently when users try to upload images larger than 5MB. This affects user retention.",
+    "status": "in-progress",
+    "priority": "critical",
+    "assignee": "2",
+    "createdAt": "2024-01-16T09:15:00.000Z",
+    "updatedAt": "2024-01-18T11:45:00.000Z"
+  },
+  {
+    "id": "issue-2024-012-hij456",
+    "title": "Add export functionality for user data",
+    "description": "Users need the ability to export their data in CSV or JSON format for compliance with data portability regulations.",
+    "status": "review",
+    "priority": "medium",
+    "assignee": "3",
+    "createdAt": "2024-01-11T14:20:00.000Z",
+    "updatedAt": "2024-01-17T16:10:00.000Z"
+  }
+]
