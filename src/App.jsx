@@ -5,7 +5,7 @@ import BoardView from "@/components/pages/BoardView";
 import ListView from "@/components/pages/ListView";
 import Analytics from "@/components/pages/Analytics";
 import Settings from "@/components/pages/Settings";
-
+import LabelManager from "@/components/pages/LabelManager";
 function App() {
   return (
     <BrowserRouter>
@@ -16,7 +16,8 @@ function App() {
             <Route path="/board" element={<BoardView />} />
             <Route path="/list" element={<ListView />} />
             <Route path="/analytics" element={<Analytics />} />
-            <Route path="/settings" element={<Settings />} />
+<Route path="/settings" element={<Settings />} />
+            <Route path="/labels" element={<LabelManager />} />
           </Routes>
         </Layout>
         <ToastContainer

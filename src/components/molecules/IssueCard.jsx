@@ -12,7 +12,8 @@ const IssueCard = ({
   onStatusChange, 
   draggable = true,
   className,
-  users = []
+  users = [],
+  labels = []
 }) => {
   const [isDragging, setIsDragging] = useState(false);
 
@@ -92,8 +93,27 @@ const IssueCard = ({
               <ApperIcon name={priorityConfig.icon} size={12} className="mr-1" />
               {issue.priority.toUpperCase()}
             </Badge>
-            <span className="text-xs text-gray-500 font-medium">#{issue.id.slice(-6)}</span>
+<span className="text-xs text-gray-500 font-medium">#{issue.id.slice(-6)}</span>
           </div>
+          
+          {/* Labels Section */}
+          {issue.labelIds && issue.labelIds.length > 0 && (
+            <div className="flex flex-wrap gap-1 mt-3">
+              {issue.labelIds.map(labelId => {
+                const label = labels.find(l => l.Id === labelId);
+                if (!label) return null;
+                return (
+                  <Badge
+                    key={labelId}
+                    style={{ backgroundColor: label.color, color: '#fff' }}
+                    className="text-xs px-2 py-0.5 font-medium"
+                  >
+                    {label.name}
+                  </Badge>
+                );
+              })}
+            </div>
+          )}
           {draggable && (
             <ApperIcon 
               name="GripVertical" 

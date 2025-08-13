@@ -1,0 +1,38 @@
+[
+  {
+    "Id": 1,
+    "name": "Bug",
+    "color": "#EF4444",
+    "description": "Issues that need to be fixed"
+  },
+  {
+    "Id": 2,
+    "name": "Feature",
+    "color": "#10B981",
+    "description": "New feature requests"
+  },
+  {
+    "Id": 3,
+    "name": "Enhancement",
+    "color": "#3B82F6",
+    "description": "Improvements to existing features"
+  },
+  {
+    "Id": 4,
+    "name": "Documentation",
+    "color": "#8B5CF6",
+    "description": "Documentation related tasks"
+  },
+  {
+    "Id": 5,
+    "name": "High Priority",
+    "color": "#F59E0B",
+    "description": "Urgent issues that need immediate attention"
+  },
+  {
+    "Id": 6,
+    "name": "Low Priority",
+    "color": "#6B7280",
+    "description": "Issues that can be addressed later"
+  }
+]

@@ -2,13 +2,16 @@ import { useState, useEffect } from "react";
 import Header from "@/components/organisms/Header";
 import issueService from "@/services/api/issueService";
 import userService from "@/services/api/userService";
+import labelService from "@/services/api/labelService";
 
 const Layout = ({ children }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [users, setUsers] = useState([]);
+  const [labels, setLabels] = useState([]);
 
   useEffect(() => {
     loadUsers();
+    loadLabels();
   }, []);
 
   const loadUsers = async () => {
@@ -17,6 +20,15 @@ const Layout = ({ children }) => {
       setUsers(userData);
     } catch (error) {
       console.error("Error loading users:", error);
+    }
+  };
+
+  const loadLabels = async () => {
+    try {
+      const labelData = await labelService.getAll();
+      setLabels(labelData);
+    } catch (error) {
+      console.error("Error loading labels:", error);
     }
   };
 
@@ -38,12 +50,13 @@ const Layout = ({ children }) => {
     console.log("Global search:", searchTerm);
   };
 
-  return (
+return (
     <div className="min-h-screen bg-background">
       <Header
         onCreateIssue={handleCreateIssue}
         onGlobalSearch={handleGlobalSearch}
         users={users}
+        labels={labels}
         mobileMenuOpen={mobileMenuOpen}
         setMobileMenuOpen={setMobileMenuOpen}
       />

@@ -1,8 +1,9 @@
 [
-  {
-    "id": "issue-2024-001-abc123",
-    "title": "Login form validation not working properly",
-    "description": "The login form accepts invalid email formats and doesn't show proper error messages. This affects user experience and security.",
+{
+"id": "TSK-001",
+"title": "Fix login authentication bug",
+"description": "Users are unable to log in with valid credentials",
+    "labelIds": [1, 5],
     "status": "open",
     "priority": "high",
     "assignee": "1",
@@ -17,7 +18,8 @@
     "priority": "medium",
     "assignee": "2",
     "createdAt": "2024-01-12T11:45:00.000Z",
-    "updatedAt": "2024-01-16T08:15:00.000Z"
+"title": "Add user profile settings",
+    "labelIds": [2]
   },
   {
     "id": "issue-2024-003-ghi789",
@@ -32,7 +34,8 @@
   {
     "id": "issue-2024-004-jkl012",
     "title": "Database connection timeout errors in production",
-    "description": "Production environment is experiencing frequent database timeout errors, especially during peak hours. This is causing application crashes.",
+"title": "Update API documentation",
+    "labelIds": [4],
     "status": "open",
     "priority": "critical",
     "assignee": "4",
@@ -47,7 +50,8 @@
     "priority": "medium",
     "assignee": "1",
     "createdAt": "2024-01-08T14:10:00.000Z",
-    "updatedAt": "2024-01-14T16:45:00.000Z"
+"title": "Optimize database queries",
+    "labelIds": [3, 5]
   },
   {
     "id": "issue-2024-006-pqr678",
@@ -62,7 +66,8 @@
   {
     "id": "issue-2024-007-stu901",
     "title": "Implement user role management system",
-    "description": "Need to add a comprehensive role management system that allows admins to assign different permissions to users based on their roles.",
+"title": "Design new landing page",
+    "labelIds": [2, 6],
     "status": "open",
     "priority": "medium",
     "assignee": "3",
@@ -77,7 +82,8 @@
     "priority": "high",
     "assignee": "4",
     "createdAt": "2024-01-13T08:15:00.000Z",
-    "updatedAt": "2024-01-18T14:30:00.000Z"
+"title": "Fix responsive layout issues",
+    "labelIds": [1, 3]
   },
   {
     "id": "issue-2024-009-yza567",
