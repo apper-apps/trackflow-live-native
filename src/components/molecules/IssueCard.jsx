@@ -129,7 +129,7 @@ const IssueCard = ({
             {issue.description}
         </p>}
         {/* Footer */}
-        <div className="flex items-center justify-between pt-2">
+<div className="flex items-center justify-between pt-2">
             <Badge variant={statusConfig.variant} className="text-xs">
                 {statusConfig.label}
             </Badge>
@@ -139,11 +139,11 @@ const IssueCard = ({
                 </span>
             </div>
             <Avatar
-                name={assignedUser.name}
-                src={assignedUser.avatar}
+                name={assignedUser?.name || 'Unassigned'}
+                src={assignedUser?.avatar || ''}
                 size="sm"
-                className="border border-white shadow-sm" />)
-                      </div>
+                className="border border-white shadow-sm" />
+        </div>
     </div>
 </Card>
   );
