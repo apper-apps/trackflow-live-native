@@ -58,8 +58,8 @@ const BoardView = () => {
     if (priorityFilter) {
       filtered = filtered.filter(issue => issue.priority === priorityFilter);
     }
-    if (assigneeFilter) {
-      filtered = filtered.filter(issue => issue.assignee === assigneeFilter);
+if (assigneeFilter) {
+      filtered = filtered.filter(issue => issue.assignee == assigneeFilter);
     }
     if (searchTerm) {
       const term = searchTerm.toLowerCase();

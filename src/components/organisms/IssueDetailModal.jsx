@@ -104,7 +104,7 @@ const IssueDetailModal = ({
     return configs[status] || configs.open;
   };
 
-  const assignedUser = users.find(user => user.Id === issue?.assignee);
+const assignedUser = users.find(user => user.Id == issue?.assignee);
   const priorityConfig = getPriorityConfig(issue?.priority);
   const statusConfig = getStatusConfig(issue?.status);
 

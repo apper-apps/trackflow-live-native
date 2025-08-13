@@ -1,68 +1,193 @@
-import usersData from "@/services/mockData/users.json";
-
 class UserService {
   constructor() {
-    this.users = [...usersData];
+    const { ApperClient } = window.ApperSDK;
+    this.apperClient = new ApperClient({
+      apperProjectId: import.meta.env.VITE_APPER_PROJECT_ID,
+      apperPublicKey: import.meta.env.VITE_APPER_PUBLIC_KEY
+    });
+    this.tableName = 'user_c';
   }
 
   async getAll() {
-    await this.delay(250);
-    return [...this.users];
+    try {
+      const params = {
+        fields: [
+          { field: { Name: "Name" } },
+          { field: { Name: "email_c" } },
+          { field: { Name: "avatar_c" } },
+          { field: { Name: "role_c" } }
+        ]
+      };
+      
+      const response = await this.apperClient.fetchRecords(this.tableName, params);
+      
+      if (!response.success) {
+        console.error(response.message);
+        throw new Error(response.message);
+      }
+      
+      // Transform database format to UI format
+      return response.data?.map(user => ({
+        Id: user.Id,
+        name: user.Name,
+        email: user.email_c || "",
+        avatar: user.avatar_c || "",
+        role: user.role_c || "developer"
+      })) || [];
+    } catch (error) {
+      console.error("Error fetching users:", error);
+      throw error;
+    }
   }
 
   async getById(id) {
-    await this.delay(200);
-    const user = this.users.find(user => user.Id === parseInt(id));
-    if (!user) {
-      throw new Error("User not found");
+    try {
+      const params = {
+        fields: [
+          { field: { Name: "Name" } },
+          { field: { Name: "email_c" } },
+          { field: { Name: "avatar_c" } },
+          { field: { Name: "role_c" } }
+        ]
+      };
+      
+      const response = await this.apperClient.getRecordById(this.tableName, id, params);
+      
+      if (!response.success) {
+        console.error(response.message);
+        throw new Error(response.message);
+      }
+      
+      const user = response.data;
+      return {
+        Id: user.Id,
+        name: user.Name,
+        email: user.email_c || "",
+        avatar: user.avatar_c || "",
+        role: user.role_c || "developer"
+      };
+    } catch (error) {
+      console.error("Error fetching user:", error);
+      throw error;
     }
-    return { ...user };
   }
 
   async create(userData) {
-    await this.delay(400);
-    const maxId = Math.max(...this.users.map(user => user.Id));
-    const newUser = {
-      Id: maxId + 1,
-      name: userData.name,
-      email: userData.email,
-      avatar: userData.avatar || "",
-      role: userData.role || "developer"
-    };
-    this.users.push(newUser);
-    return { ...newUser };
+    try {
+      const params = {
+        records: [{
+          Name: userData.name,
+          email_c: userData.email,
+          avatar_c: userData.avatar || "",
+          role_c: userData.role || "developer"
+        }]
+      };
+      
+      const response = await this.apperClient.createRecord(this.tableName, params);
+      
+      if (!response.success) {
+        console.error(response.message);
+        throw new Error(response.message);
+      }
+      
+      if (response.results && response.results.length > 0) {
+        const result = response.results[0];
+        if (!result.success) {
+          console.error(`Failed to create user: ${JSON.stringify([result])}`);
+          throw new Error(result.message || 'Failed to create user');
+        }
+        
+        const newUser = result.data;
+        return {
+          Id: newUser.Id,
+          name: newUser.Name,
+          email: newUser.email_c || "",
+          avatar: newUser.avatar_c || "",
+          role: newUser.role_c || "developer"
+        };
+      }
+      
+      throw new Error('No data returned from create operation');
+    } catch (error) {
+      console.error("Error creating user:", error);
+      throw error;
+    }
   }
 
   async update(id, updateData) {
-    await this.delay(300);
-    const userIndex = this.users.findIndex(user => user.Id === parseInt(id));
-    if (userIndex === -1) {
-      throw new Error("User not found");
+    try {
+      const updateRecord = {
+        Id: parseInt(id)
+      };
+      
+      // Only include updateable fields
+      if (updateData.name !== undefined) updateRecord.Name = updateData.name;
+      if (updateData.email !== undefined) updateRecord.email_c = updateData.email;
+      if (updateData.avatar !== undefined) updateRecord.avatar_c = updateData.avatar;
+      if (updateData.role !== undefined) updateRecord.role_c = updateData.role;
+      
+      const params = {
+        records: [updateRecord]
+      };
+      
+      const response = await this.apperClient.updateRecord(this.tableName, params);
+      
+      if (!response.success) {
+        console.error(response.message);
+        throw new Error(response.message);
+      }
+      
+      if (response.results && response.results.length > 0) {
+        const result = response.results[0];
+        if (!result.success) {
+          console.error(`Failed to update user: ${JSON.stringify([result])}`);
+          throw new Error(result.message || 'Failed to update user');
+        }
+        
+        const updatedUser = result.data;
+        return {
+          Id: updatedUser.Id,
+          name: updatedUser.Name,
+          email: updatedUser.email_c || "",
+          avatar: updatedUser.avatar_c || "",
+          role: updatedUser.role_c || "developer"
+        };
+      }
+      
+      throw new Error('No data returned from update operation');
+    } catch (error) {
+      console.error("Error updating user:", error);
+      throw error;
     }
-    
-    const updatedUser = {
-      ...this.users[userIndex],
-      ...updateData,
-      Id: parseInt(id)
-    };
-    
-    this.users[userIndex] = updatedUser;
-    return { ...updatedUser };
   }
 
   async delete(id) {
-    await this.delay(250);
-    const userIndex = this.users.findIndex(user => user.Id === parseInt(id));
-    if (userIndex === -1) {
-      throw new Error("User not found");
+    try {
+      const params = {
+        RecordIds: [parseInt(id)]
+      };
+      
+      const response = await this.apperClient.deleteRecord(this.tableName, params);
+      
+      if (!response.success) {
+        console.error(response.message);
+        throw new Error(response.message);
+      }
+      
+      if (response.results && response.results.length > 0) {
+        const result = response.results[0];
+        if (!result.success) {
+          console.error(`Failed to delete user: ${JSON.stringify([result])}`);
+          throw new Error(result.message || 'Failed to delete user');
+        }
+        return true;
+      }
+      
+      return false;
+    } catch (error) {
+      console.error("Error deleting user:", error);
+      throw error;
     }
-    
-    this.users.splice(userIndex, 1);
-    return true;
-  }
-
-  delay(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
   }
 }
 

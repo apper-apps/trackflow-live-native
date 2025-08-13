@@ -1,11 +1,12 @@
-import { useState } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
-import Button from "@/components/atoms/Button";
-import SearchBar from "@/components/molecules/SearchBar";
-import QuickCreateForm from "@/components/molecules/QuickCreateForm";
-import ApperIcon from "@/components/ApperIcon";
-import { cn } from "@/utils/cn";
-
+import { useState, useContext } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { AuthContext } from '../../App';
+import Button from '@/components/atoms/Button';
+import SearchBar from '@/components/molecules/SearchBar';
+import QuickCreateForm from '@/components/molecules/QuickCreateForm';
+import ApperIcon from '@/components/ApperIcon';
+import { cn } from '@/utils/cn';
 const Header = ({ 
   onCreateIssue, 
   onGlobalSearch, 
@@ -13,6 +14,8 @@ const Header = ({
   mobileMenuOpen, 
   setMobileMenuOpen 
 }) => {
+  const { logout } = useContext(AuthContext);
+  const { user } = useSelector((state) => state.user);
   const [showQuickCreate, setShowQuickCreate] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
@@ -71,7 +74,15 @@ const Header = ({
               </button>
             ))}
           </nav>
-
+<Button
+              variant="ghost"
+              size="sm"
+              onClick={logout}
+              className="flex items-center gap-2 text-gray-600 hover:text-gray-900"
+            >
+              <ApperIcon name="LogOut" size={16} />
+              Logout
+            </Button>
           {/* Search and Actions */}
           <div className="flex items-center gap-3">
             <div className="hidden sm:block w-64">

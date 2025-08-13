@@ -67,8 +67,8 @@ const ListView = () => {
     if (priorityFilter) {
       filtered = filtered.filter(issue => issue.priority === priorityFilter);
     }
-    if (assigneeFilter) {
-      filtered = filtered.filter(issue => issue.assignee === assigneeFilter);
+if (assigneeFilter) {
+      filtered = filtered.filter(issue => issue.assignee == assigneeFilter);
     }
     if (searchTerm) {
       const term = searchTerm.toLowerCase();
@@ -324,7 +324,7 @@ const ListView = () => {
                   {filteredIssues.map((issue) => {
                     const priorityConfig = getPriorityConfig(issue.priority);
                     const statusConfig = getStatusConfig(issue.status);
-                    const assignedUser = users.find(user => user.Id === issue.assignee);
+const assignedUser = users.find(user => user.Id == issue.assignee);
                     
                     return (
                       <tr 

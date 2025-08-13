@@ -67,8 +67,8 @@ const Analytics = () => {
   );
 
   // User assignment stats
-  const userStats = users.map(user => {
-    const userIssues = issues.filter(issue => issue.assignee === user.Id);
+const userStats = users.map(user => {
+    const userIssues = issues.filter(issue => issue.assignee == user.Id);
     const closedUserIssues = userIssues.filter(issue => issue.status === "closed");
     return {
       ...user,

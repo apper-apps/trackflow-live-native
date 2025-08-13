@@ -75,7 +75,7 @@ const QuickCreateForm = ({ onSubmit, onCancel, users = [], className }) => {
             disabled={isSubmitting}
           >
             <option value="">Unassigned</option>
-            {users.map(user => (
+{users.map(user => (
               <option key={user.Id} value={user.Id}>
                 {user.name}
               </option>

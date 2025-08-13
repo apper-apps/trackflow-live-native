@@ -57,9 +57,9 @@ const IssueCard = ({
     return configs[status] || configs.open;
   };
 
-  const priorityConfig = getPriorityConfig(issue.priority);
+const priorityConfig = getPriorityConfig(issue.priority);
   const statusConfig = getStatusConfig(issue.status);
-  const assignedUser = users.find(user => user.Id === issue.assignee);
+  const assignedUser = users.find(user => user.Id == issue.assignee);
 
   const handleDragStart = (e) => {
     setIsDragging(true);
@@ -95,7 +95,7 @@ const IssueCard = ({
                 <span className="text-xs text-gray-500 font-medium">#{issue.id.slice(-6)}</span>
             </div>
             {/* Labels Section */}
-            {issue.labelIds && issue.labelIds.length > 0 && <div className="flex flex-wrap gap-1 mt-3">
+{issue.labelIds && issue.labelIds.length > 0 && <div className="flex flex-wrap gap-1 mt-3">
                 {issue.labelIds.map(labelId => {
                     const label = labels.find(l => l.Id === labelId);
 
