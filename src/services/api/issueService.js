@@ -231,6 +231,4 @@ class IssueService {
     }
   }
 }
-
-export default new IssueService();
 export default new IssueService();
