@@ -1,10 +1,10 @@
-import { useState } from "react";
-import Card from "@/components/atoms/Card";
+import React, { useState } from "react";
+import { format } from "date-fns";
+import ApperIcon from "@/components/ApperIcon";
 import Badge from "@/components/atoms/Badge";
 import Avatar from "@/components/atoms/Avatar";
-import ApperIcon from "@/components/ApperIcon";
+import Card from "@/components/atoms/Card";
 import { cn } from "@/utils/cn";
-import { format } from "date-fns";
 
 const IssueCard = ({ 
   issue, 
@@ -73,90 +73,79 @@ const IssueCard = ({
 
   return (
     <Card
-      className={cn(
+    className={cn(
         "p-4 cursor-pointer issue-card border-l-4 transition-all duration-200",
         priorityConfig.color,
         priorityConfig.bgColor,
         isDragging && "opacity-50 scale-95",
         className
-      )}
-      draggable={draggable}
-      onDragStart={handleDragStart}
-      onDragEnd={handleDragEnd}
-      onClick={() => onEdit?.(issue)}
-    >
-      <div className="space-y-3">
+    )}
+    draggable={draggable}
+    onDragStart={handleDragStart}
+    onDragEnd={handleDragEnd}
+    onClick={() => onEdit?.(issue)}>
+    <div className="space-y-3">
         {/* Header */}
         <div className="flex items-start justify-between">
-          <div className="flex items-center gap-2">
-            <Badge variant={priorityConfig.variant} className="text-xs font-semibold">
-              <ApperIcon name={priorityConfig.icon} size={12} className="mr-1" />
-              {issue.priority.toUpperCase()}
-            </Badge>
-<span className="text-xs text-gray-500 font-medium">#{issue.id.slice(-6)}</span>
-          </div>
-          
-          {/* Labels Section */}
-          {issue.labelIds && issue.labelIds.length > 0 && (
-            <div className="flex flex-wrap gap-1 mt-3">
-              {issue.labelIds.map(labelId => {
-                const label = labels.find(l => l.Id === labelId);
-                if (!label) return null;
-                return (
-                  <Badge
-                    key={labelId}
-                    style={{ backgroundColor: label.color, color: '#fff' }}
-                    className="text-xs px-2 py-0.5 font-medium"
-                  >
-                    {label.name}
-                  </Badge>
-                );
-              })}
+            <div className="flex items-center gap-2">
+                <Badge variant={priorityConfig.variant} className="text-xs font-semibold">
+                    <ApperIcon name={priorityConfig.icon} size={12} className="mr-1" />
+                    {issue.priority.toUpperCase()}
+                </Badge>
+                <span className="text-xs text-gray-500 font-medium">#{issue.id.slice(-6)}</span>
             </div>
-          )}
-          {draggable && (
-            <ApperIcon 
-              name="GripVertical" 
-              size={16} 
-              className="text-gray-400 drag-handle flex-shrink-0" 
-            />
-          )}
-        </div>
+            {/* Labels Section */}
+            {issue.labelIds && issue.labelIds.length > 0 && <div className="flex flex-wrap gap-1 mt-3">
+                {issue.labelIds.map(labelId => {
+                    const label = labels.find(l => l.Id === labelId);
 
+                    if (!label)
+                        return null;
+
+                    return (
+                        <Badge
+                            key={labelId}
+                            style={{
+                                backgroundColor: label.color,
+                                color: "#fff"
+                            }}
+                            className="text-xs px-2 py-0.5 font-medium">
+                            {label.name}
+                        </Badge>
+                    );
+                })}
+            </div>}
+            {draggable && <ApperIcon
+                name="GripVertical"
+                size={16}
+                className="text-gray-400 drag-handle flex-shrink-0" />}
+        </div>
         {/* Title */}
         <h3 className="font-semibold text-gray-900 line-clamp-2 text-sm leading-5">
-          {issue.title}
+            {issue.title}
         </h3>
-
         {/* Description */}
-        {issue.description && (
-          <p className="text-xs text-gray-600 line-clamp-2 leading-4">
+        {issue.description && <p className="text-xs text-gray-600 line-clamp-2 leading-4">
             {issue.description}
-          </p>
-        )}
-
+        </p>}
         {/* Footer */}
         <div className="flex items-center justify-between pt-2">
-          <Badge variant={statusConfig.variant} className="text-xs">
-            {statusConfig.label}
-          </Badge>
-          
-          <div className="flex items-center gap-2">
-            <span className="text-xs text-gray-500">
-              {format(new Date(issue.updatedAt), "MMM d")}
-            </span>
-            {assignedUser && (
-              <Avatar 
+            <Badge variant={statusConfig.variant} className="text-xs">
+                {statusConfig.label}
+            </Badge>
+            <div className="flex items-center justify-between text-xs text-gray-500">
+                <span className="text-xs text-gray-500">
+                    {issue?.updatedAt && !isNaN(new Date(issue.updatedAt).getTime()) ? format(new Date(issue.updatedAt), "MMM d") : "No date"}
+                </span>
+            </div>
+            <Avatar
                 name={assignedUser.name}
                 src={assignedUser.avatar}
                 size="sm"
-                className="border border-white shadow-sm"
-              />
-            )}
-          </div>
-        </div>
-      </div>
-    </Card>
+                className="border border-white shadow-sm" />)
+                      </div>
+    </div>
+</Card>
   );
 };
 
